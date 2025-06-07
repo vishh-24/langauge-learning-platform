@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Learning Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:#02387a;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+       .dialecto {
+        position: absolute;
+        top: 40px;
+        left: 20px;
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+        z-index: 1000; /* Ensure it's above other elements */
+    }
+
+      .sidebar {
+            width: 200px;
+            height: 100vh;
+             border: 1px solid #ddd;
+            background-color: #02387a;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+        }
+         .sidebar a {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 22px;
+             position: relative; 
+            top: 110px;
+        }
+
+        .sidebar a img {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        main {
+            margin-left: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px; /* Larger gap for bigger boxes */
+        }
+
+       .language-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    padding: 30px; /* Increased padding */
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); /* Black shadow with slight opacity */
+    width: 250px; /* Increased width */
+    height: 250px; /* Increased height */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add smooth transition for hover effect */
+}
+
+.language-card:hover {
+    transform: translateY(-5px); /* Slightly lift the box on hover */
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.4); /* Darker and larger shadow on hover */
+}
+
+        .language-card img {
+            width: 150px; /* Larger image */
+            height: 150px;
+            margin-bottom: 20px;
+        }
+
+        .language-card h2 {
+            font-size: 18px; /* Larger text */
+            margin: 0;
+            color: #333;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <div class="dialecto">Dialecto</div>
+    <div class="sidebar">
+        <a href="#">
+            <img src="images/learn.png" alt="Learn Icon">
+            Learn
+        </a>
+        <a href="practice.html">
+            <img src="images/practice.png" alt="Practice Icon">
+            Practice
+        </a>
+        <a href="#">
+            <img src="images/profile.png" alt="Profile Icon">
+            Profile
+        </a>
+        <a href="#">
+            <img src="images/more.png" alt="More Icon">
+            More
+        </a>
+    </div>
+
+    <main>
+        <div class="language-grid">
+            <div class="language-card">
+                <a href="kannada.html">
+                    <img src="images/kannada.png" alt="Kannada Language">
+                    <h2>Kannada</h2>
+                </a>
+            </div>
+            <div class="language-card">
+                <a href="telugu.html">
+                    <img src="images/telugu.png" alt="Telugu Language">
+                    <h2>Telugu</h2>
+                </a>
+            </div>
+            <div class="language-card">
+                <a href="tamil.html">
+                    <img src="images/tamil.png" alt="Tamil Language">
+                    <h2>Tamil</h2>
+                </a>
+            </div>
+            <div class="language-card">
+                <a href="malayalam.html">
+                    <img src="images/malayalam.png" alt="Malayalam Language">
+                    <h2>Malayalam</h2>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; Dialecto</p>
+    </footer>
+</body>
+</html>

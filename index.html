@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dialecto</title>
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #02387a; /* Changed background color */
+      font-family: Arial, sans-serif;
+    }
+
+    /* Main Box */
+    .main-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh;
+      padding: 0 15%; /* Reduced padding */
+      position: relative;
+    }
+
+    .browser-box {
+      background-color: #f4f4f4;
+      width: 600px; /* Reduced width */
+      height: 300px;
+      border: 3px solid #000;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 15px 15px 0px #000;
+      z-index: 1;
+    }
+
+    .browser-header {
+      background-color: #fff;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      border-bottom: 3px solid #000;
+    }
+
+    .browser-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .circle {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background-color: #000;
+    }
+
+    .content {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .content h1 {
+      font-size: 72px;
+      font-weight: bold;
+    }
+
+    .content p {
+      font-size: 24px;
+      margin-top: 15px;
+    }
+
+    /* Sidebar Buttons */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      position: sticky;
+      top: 20%;
+      width: 300px; /* Sidebar width */
+      height: auto;
+    }
+
+    .btn {
+      background-color: #f4f4f4;
+      color: #000;
+      font-weight: bold;
+      text-align: center;
+      border: 3px solid #000;
+      box-shadow: 8px 8px 0px #000;
+      border-radius: 8px;
+      padding: 20px 30px; /* Larger padding */
+      width: 100%; /* Full width of the sidebar */
+      cursor: pointer;
+      font-size: 24px;
+    }
+
+    .btn:hover {
+      background-color: #34495e; /* Updated hover color */
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <!-- Main Browser Box -->
+    <div class="browser-box">
+      <div class="browser-header">
+        <div class="browser-buttons">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+      </div>
+      <div class="content">
+        <h1>Dialecto</h1>
+        <p>Learn, Speak, and Connect</p>
+      </div>
+    </div>
+
+    <!-- Sidebar Buttons -->
+    <div class="sidebar">
+      <div class="btn">About Us</div>
+      <a href="login.html" style="text-decoration: none;">
+        <div class="btn">Login</div>
+      </a>
+      <div class="btn">Contact Us</div>
+    </div>
+  </div>
+</body>
+</html>

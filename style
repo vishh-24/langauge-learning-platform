@@ -1,0 +1,116 @@
+/* Reset and Basics */
+body {
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #fdfdfd; /* Off-White Background */
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+    background: linear-gradient(to right, #ffecd2, #fcb69f); /* Light Orange Gradient */
+    color: #333;
+    text-align: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid #e0e0e0;
+    animation: fadeIn 1.5s ease;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #2c3e50; /* Blue-Gray */
+}
+
+header p {
+    font-size: 1rem;
+    color: #555; /* Dark Gray */
+}
+
+/* Main Section */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    animation: fadeIn 1.5s ease;
+}
+
+.language-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.language-card {
+    background: linear-gradient(to bottom, #f8f9fa, #eef5fc); /* Light Blue Background */
+    border: 1px solid #e3e6ea;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+
+.language-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.language-card h2 {
+    margin: 0;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #2a3f54; /* Muted Blue */
+    background-color: #ffecd2; /* Light Orange Tint */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover Effects */
+.language-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+language-card:hover img {
+    transform: scale(1.05);
+}
+
+.language-card:hover h2 {
+    background-color: #fcb69f; /* Deeper Light Orange */
+    color: #2c3e50;
+}
+
+/* Footer Styling */
+footer {
+    background: linear-gradient(to right, #ffecd2, #fcb69f); /* Light Orange Gradient */
+    color: #2c3e50; /* Blue-Gray */
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    margin-top: auto;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

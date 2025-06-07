@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Malayalam</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #02387a;
+            text-align: center;
+        }
+
+        header {
+            background-color: #02387a;
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        h2 {
+            color: #02387a;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .alphabet-section {
+            margin: 2rem 0;
+        }
+
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 10px;
+            margin: 1rem auto;
+            max-width: 600px;
+        }
+
+        .alphabet-grid div {
+            padding: 1rem;
+            background-color: #02387a;
+            color: #ffffff;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-section .options button {
+            background-color: #02387a;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .quiz-section .options button:hover {
+            background-color: #345d94;
+            transform: translateY(-2px);
+        }
+
+        .quiz-section #feedback {
+            margin-top: 1rem;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #02387a;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Learn Malayalam</h1>
+    </header>
+
+    <main>
+        <!-- Alphabet Section -->
+        <section class="alphabet-section">
+            <h2>Malayalam Alphabet</h2>
+            <div class="alphabet-grid">
+                <div>അ (a)</div>
+                <div>ആ (aa)</div>
+                <div>ഇ (i)</div>
+                <div>ഈ (ii)</div>
+                <div>ഉ (u)</div>
+                <div>ഊ (uu)</div>
+                <div>എ (e)</div>
+                <div>ഏ (ee)</div>
+                <div>ഐ (ai)</div>
+                <div>ഒ (o)</div>
+                <div>ഓ (oo)</div>
+                <div>ഔ (au)</div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="quiz-section">
+            <h2>Malayalam Word Quiz</h2>
+            <p id="question">Translate "House" to Malayalam:</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, 'വീട്')">വീട്</button>
+                <button class="option" onclick="checkAnswer(this, 'വെളിച്ചം')">വെളിച്ചം</button>
+                <button class="option" onclick="checkAnswer(this, 'വെള്ളം')">വെള്ളം</button>
+            </div>
+            <p id="feedback"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Learn Malayalam Platform</p>
+    </footer>
+
+    <script>
+        function checkAnswer(button, correctAnswer) {
+            const userAnswer = button.textContent.trim();
+            const feedback = document.getElementById('feedback');
+            
+            if (userAnswer === correctAnswer) {
+                feedback.textContent = "Correct! Well done.";
+                feedback.style.color = "green";
+            } else {
+                feedback.textContent = "Try Again!";
+                feedback.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

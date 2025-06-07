@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telugu Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #02387a;
+            color: white;
+            text-align: center;
+        }
+        header {
+            padding: 20px;
+            background-color: #02387a;
+            color: white;
+        }
+
+        .gamification {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+            background-color: #012a5e;
+        }
+
+        .progress-bar {
+            width: 60%;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background-color: lightgreen;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .score {
+            font-size: 1.2rem;
+        }
+
+        .badges {
+            font-size: 1rem;
+        }
+
+        .quiz-section {
+            padding: 20px;
+        }
+
+        .question {
+            margin: 20px 0;
+            font-size: 1.2rem;
+        }
+
+        .options button {
+            background-color: #fff;
+            color: #02387a;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .options button:hover {
+            background-color: #ddd;
+        }
+
+        #feedback {
+            margin: 20px 0;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        footer {
+            padding: 20px;
+            background-color: #02387a;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Telugu Quiz</h1>
+    </header>
+
+    <div class="gamification">
+        <div class="score">
+            Score: <span id="score">0</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+        <div class="badges">
+            Badges: <span id="badges">None</span>
+        </div>
+    </div>
+
+    <div class="quiz-section">
+        <div class="question">
+            <p>What is the Telugu word for "Hello"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Namaskaram')">Namaskaram</button>
+            <button onclick="checkAnswer('Vandanam')">Vandanam</button>
+            <button onclick="checkAnswer('Namaste')">Namaste</button>
+            <button onclick="checkAnswer('Subhakankshalu')">Subhakankshalu</button>
+        </div>
+
+        <div class="question">
+            <p>What is the Telugu word for "Water"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Neellu')">Neellu</button>
+            <button onclick="checkAnswer('Manchi')">Manchi</button>
+            <button onclick="checkAnswer('Cheyyi')">Cheyyi</button>
+            <button onclick="checkAnswer('Chettu')">Chettu</button>
+        </div>
+
+        <div class="question">
+            <p>What is the Telugu word for "Food"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Bhojanam')">Bhojanam</button>
+            <button onclick="checkAnswer('Tindi')">Tindi</button>
+            <button onclick="checkAnswer('Annam')">Annam</button>
+            <button onclick="checkAnswer('Roti')">Roti</button>
+        </div>
+
+        <div class="question">
+            <p>What is the Telugu word for "Book"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Pustakam')">Pustakam</button>
+            <button onclick="checkAnswer('Grandham')">Grandham</button>
+            <button onclick="checkAnswer('Patrika')">Patrika</button>
+            <button onclick="checkAnswer('Kaagitham')">Kaagitham</button>
+        </div>
+
+        <div class="question">
+            <p>What is the Telugu word for "Friend"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Snehamithru')">Snehamithru</button>
+            <button onclick="checkAnswer('Bandhu')">Bandhu</button>
+            <button onclick="checkAnswer('Sahakaram')">Sahakaram</button>
+            <button onclick="checkAnswer('Priyudu')">Priyudu</button>
+        </div>
+
+        <div class="question">
+            <p>What is the Telugu word for "Teacher"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Guru')">Guru</button>
+            <button onclick="checkAnswer('Upadhyaya')">Upadhyaya</button>
+            <button onclick="checkAnswer('Pathaka')">Pathaka</button>
+            <button onclick="checkAnswer('Shikshakudu')">Shikshakudu</button>
+        </div>
+
+        <div class="question">
+            <p>What is the Telugu word for "Tree"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Chettu')">Chettu</button>
+            <button onclick="checkAnswer('Vruksham')">Vruksham</button>
+            <button onclick="checkAnswer('Puvvu')">Puvvu</button>
+            <button onclick="checkAnswer('Podalu')">Podalu</button>
+        </div>
+
+        <div id="feedback"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Dialecto</p>
+    </footer>
+
+    <script>
+        let score = 0;
+        let totalQuestions = 7;
+
+        function checkAnswer(answer) {
+            const feedback = document.getElementById('feedback');
+            const scoreElement = document.getElementById('score');
+            const progress = document.getElementById('progress');
+            const badges = document.getElementById('badges');
+
+            const correctAnswers = {
+                'Namaskaram': 'Correct! "Namaskaram" means "Hello" in Telugu.',
+                'Neellu': 'Correct! "Neellu" means "Water" in Telugu.',
+                'Bhojanam': 'Correct! "Bhojanam" means "Food" in Telugu.',
+                'Pustakam': 'Correct! "Pustakam" means "Book" in Telugu.',
+                'Snehamithru': 'Correct! "Snehamithru" means "Friend" in Telugu.',
+                'Guru': 'Correct! "Guru" means "Teacher" in Telugu.',
+                'Chettu': 'Correct! "Chettu" means "Tree" in Telugu.'
+            };
+
+            if (correctAnswers[answer]) {
+                feedback.textContent = correctAnswers[answer];
+                feedback.style.color = 'lightgreen';
+                score += 1;
+                scoreElement.textContent = score;
+                progress.style.width = `${(score / totalQuestions) * 100}%`;
+
+                if (score === totalQuestions) {
+                    badges.textContent = 'Quiz Master';
+                }
+            } else {
+                feedback.textContent = 'Incorrect! Try again.';
+                feedback.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>

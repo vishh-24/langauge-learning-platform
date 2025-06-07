@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Kannada</title>
+    <link rel="stylesheet" href="kannada.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #02387a;
+            text-align: center;
+        }
+
+        header {
+            background-color: #02387a;
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        h2 {
+            color: #02387a;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .alphabet-section {
+            margin: 2rem 0;
+        }
+
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 10px;
+            margin: 1rem auto;
+            max-width: 600px;
+        }
+
+        .alphabet-grid div {
+            padding: 1rem;
+            background-color: #02387a;
+            color: #ffffff;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-section .options button {
+            background-color: #02387a;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            margin: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .quiz-section .options button:hover {
+            background-color: #345d94;
+            transform: translateY(-2px);
+        }
+
+        .quiz-section #feedback {
+            margin-top: 1rem;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #02387a;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #02387a;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .chatbot:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #c5cae9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            height: 400px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .chat-popup.open {
+            display: block;
+        }
+
+        .chat-popup-header {
+            background-color: #02387a;
+            color: white;
+            padding: 0.8rem;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .chat-popup-body {
+            padding: 1rem;
+            overflow-y: auto;
+            height: calc(100% - 50px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .chat-popup-body .messages {
+            flex-grow: 1;
+            margin-bottom: 1rem;
+        }
+
+        .chat-popup-body input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #c5cae9;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Learn Kannada</h1>
+    </header>
+
+    <main>
+        <!-- Alphabet Section -->
+        <section class="alphabet-section">
+            <h2>Kannada Alphabet</h2>
+            <div class="alphabet-grid">
+                <div>ಅ (a)</div>
+                <div>ಆ (aa)</div>
+                <div>ಇ (i)</div>
+                <div>ಈ (ii)</div>
+                <div>ಉ (u)</div>
+                <div>ಊ (uu)</div>
+                <div>ಋ (r)</div>
+                <div>ಎ (e)</div>
+                <div>ಏ (ee)</div>
+                <div>ಐ (ai)</div>
+                <div>ಒ (o)</div>
+                <div>ಓ (oo)</div>
+                <div>ಔ (au)</div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="quiz-section">
+            <h2>Kannada Word Quiz</h2>
+            <p id="question">Translate "House" to Kannada:</p>
+            <div class="options">
+                <button class="option" onclick="checkAnswer(this, 'ಮನೆ')">ಮನೆ</button>
+                <button class="option" onclick="checkAnswer(this, 'ಬೆಳಕು')">ಬೆಳಕು</button>
+                <button class="option" onclick="checkAnswer(this, 'ನೀರು')">ನೀರು</button>
+            </div>
+            <p id="feedback"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Learn Kannada Platform</p>
+    </footer>
+
+    <script>
+        const predefinedResponses = {
+            "good morning": "Good Morning in Kannada is 'ಶುಭೋದಯ (Shubhodaya)'.",
+            "hello": "Hello in Kannada is 'ನಮಸ್ಕಾರ (Namaskara)'.",
+            "thank you": "Thank you in Kannada is 'ಧನ್ಯವಾದಗಳು (Dhanyavadagalu)'.",
+            "how are you": "How are you in Kannada is 'ನೀವು ಹೇಗಿದ್ದೀರಿ? (Neenu hegiddiri?)'.",
+        };
+
+        function checkAnswer(button, correctAnswer) {
+            const userAnswer = button.textContent.trim();
+            const feedback = document.getElementById('feedback');
+            
+            if (userAnswer === correctAnswer) {
+                feedback.textContent = "Correct! Well done.";
+            } else {
+                feedback.textContent = "Try Again!";
+            }
+        }
+
+        function toggleChat() {
+            const chatPopup = document.getElementById('chatPopup');
+            chatPopup.classList.toggle('open');
+        }
+
+        function sendMessage(event) {
+            if (event.key === 'Enter' || event.type === 'click') {
+                const input = document.getElementById('chatInput');
+                const message = input.value.trim().toLowerCase();
+
+                if (message) {
+                    const messages = document.getElementById('chatMessages');
+                    const userMessage = document.createElement('div');
+                    userMessage.textContent = `You: ${message}`;
+                    userMessage.style.marginBottom = '10px';
+                    messages.appendChild(userMessage);
+
+                    const botResponse = predefinedResponses[message] || "Sorry, I didn't understand that. Try asking about basic Kannada phrases!";
+                    setTimeout(() => {
+                        const botMessage = document.createElement('div');
+                        botMessage.textContent = `Bot: ${botResponse}`;
+                        botMessage.style.marginBottom = '10px';
+                        messages.appendChild(botMessage);
+                        messages.scrollTop = messages.scrollHeight;
+                    }, 500);
+
+                    input.value = '';
+                }
+            }
+        }
+    </script>
+
+    <!-- Chat Popup Button -->
+    <div class="chatbot" onclick="toggleChat()">Chat</div>
+
+    <!-- Chat Popup -->
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-popup-header">feedback chatbot</div>
+        <div class="chat-popup-body">
+            <div class="messages" id="chatMessages"></div>
+            <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="sendMessage(event)" />
+        </div>
+    </div>
+</body>
+</html>

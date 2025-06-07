@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kannada Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #02387a;
+            color: white;
+            text-align: center;
+        }
+        header {
+            padding: 20px;
+            background-color: #02387a;
+            color: white;
+        }
+
+        .gamification {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+            background-color: #012a5e;
+        }
+
+        .progress-bar {
+            width: 60%;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background-color: lightgreen;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .score {
+            font-size: 1.2rem;
+        }
+
+        .badges {
+            font-size: 1rem;
+        }
+
+        .quiz-section {
+            padding: 20px;
+        }
+
+        .question {
+            margin: 20px 0;
+            font-size: 1.2rem;
+        }
+
+        .options button {
+            background-color: #fff;
+            color: #02387a;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .options button:hover {
+            background-color: #ddd;
+        }
+
+        #feedback {
+            margin: 20px 0;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        footer {
+            padding: 20px;
+            background-color: #02387a;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Kannada Quiz</h1>
+    </header>
+
+    <div class="gamification">
+        <div class="score">
+            Score: <span id="score">0</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+        <div class="badges">
+            Badges: <span id="badges">None</span>
+        </div>
+    </div>
+
+    <div class="quiz-section">
+        <div class="question">
+            <p>What is the Kannada word for "Hello"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Namaskara')">Namaskara</button>
+            <button onclick="checkAnswer('Vandanam')">Vandanam</button>
+            <button onclick="checkAnswer('Namaste')">Namaste</button>
+            <button onclick="checkAnswer('Sugam')">Sugam</button>
+        </div>
+
+        <div class="question">
+            <p>What is the Kannada word for "Water"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Neeru')">Neeru</button>
+            <button onclick="checkAnswer('Mannu')">Mannu</button>
+            <button onclick="checkAnswer('Baanu')">Baanu</button>
+            <button onclick="checkAnswer('Hani')">Hani</button>
+        </div>
+
+        <div class="question">
+            <p>What is the Kannada word for "Food"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Oota')">Oota</button>
+            <button onclick="checkAnswer('Bhojana')">Bhojana</button>
+            <button onclick="checkAnswer('Tindi')">Tindi</button>
+            <button onclick="checkAnswer('Anna')">Anna</button>
+        </div>
+
+        <div class="question">
+            <p>What is the Kannada word for "Book"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Pustaka')">Pustaka</button>
+            <button onclick="checkAnswer('Grantha')">Grantha</button>
+            <button onclick="checkAnswer('Patrike')">Patrike</button>
+            <button onclick="checkAnswer('Kaagada')">Kaagada</button>
+        </div>
+
+        <div class="question">
+            <p>What is the Kannada word for "Friend"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Sneehita')">Sneehita</button>
+            <button onclick="checkAnswer('Bandhu')">Bandhu</button>
+            <button onclick="checkAnswer('Sahavasi')">Sahavasi</button>
+            <button onclick="checkAnswer('Priya')">Priya</button>
+        </div>
+
+        <div class="question">
+            <p>What is the Kannada word for "Teacher"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Guru')">Guru</button>
+            <button onclick="checkAnswer('Adhyapaka')">Adhyapaka</button>
+            <button onclick="checkAnswer('Pathaka')">Pathaka</button>
+            <button onclick="checkAnswer('Shikshaka')">Shikshaka</button>
+        </div>
+
+        <div class="question">
+            <p>What is the Kannada word for "Tree"?</p>
+        </div>
+        <div class="options">
+            <button onclick="checkAnswer('Mara')">Mara</button>
+            <button onclick="checkAnswer('Vruksha')">Vruksha</button>
+            <button onclick="checkAnswer('Chettu')">Chettu</button>
+            <button onclick="checkAnswer('Hoo')">Hoo</button>
+        </div>
+
+        <div id="feedback"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Dialecto</p>
+    </footer>
+
+    <script>
+        let score = 0;
+        let totalQuestions = 7;
+
+        function checkAnswer(answer) {
+            const feedback = document.getElementById('feedback');
+            const scoreElement = document.getElementById('score');
+            const progress = document.getElementById('progress');
+            const badges = document.getElementById('badges');
+
+            const correctAnswers = {
+                'Namaskara': 'Correct! "Namaskara" means "Hello" in Kannada.',
+                'Neeru': 'Correct! "Neeru" means "Water" in Kannada.',
+                'Oota': 'Correct! "Oota" means "Food" in Kannada.',
+                'Pustaka': 'Correct! "Pustaka" means "Book" in Kannada.',
+                'Sneehita': 'Correct! "Sneehita" means "Friend" in Kannada.',
+                'Guru': 'Correct! "Guru" means "Teacher" in Kannada.',
+                'Mara': 'Correct! "Mara" means "Tree" in Kannada.'
+            };
+
+            if (correctAnswers[answer]) {
+                feedback.textContent = correctAnswers[answer];
+                feedback.style.color = 'lightgreen';
+                score += 1;
+                scoreElement.textContent = score;
+                progress.style.width = `${(score / totalQuestions) * 100}%`;
+
+                if (score === totalQuestions) {
+                    badges.textContent = 'Quiz Master';
+                }
+            } else {
+                feedback.textContent = 'Incorrect! Try again.';
+                feedback.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
